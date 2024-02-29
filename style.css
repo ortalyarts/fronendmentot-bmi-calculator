@@ -328,6 +328,10 @@ input[type=text]{
   padding:1.8rem;
   display:grid;
 }
+/* #text {
+  min-width:20vh;
+  padding-left:0.5rem;
+} */
 .result #text h2, #result-holder h2{
   color:white;
   line-height:150%;
@@ -478,6 +482,11 @@ footer a { color: var(--color1); }
 @media screen and (max-width:40rem) {
   #set-metric .even-columns-2{
     grid-template-columns: 1fr;
+  }
+  .result{
+    border-radius: 0.6rem;
+    grid-template-columns:1fr !important;
+    gap:1rem;
   }
   .main-article{
     display:grid;
