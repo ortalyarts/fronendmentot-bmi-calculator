@@ -558,7 +558,7 @@ footer a { color: var(--color1); }
     font-size:4rem;
     margin-top:5.5rem;
     letter-spacing:-0.2rem;
-    max-width:97%;
+    max-width:100%;
     text-align: left;
   }
   .hero{
