@@ -42,23 +42,59 @@ radioImperail.addEventListener('click', ()=>{
 
 
 // Calculations
+
+
 const calcMetric = ()=>{
-    const bmi = Math.round((inputWeight.value / (inputHeight.value * inputHeight.value) * 10000) * 10) / 10 ;
+    const height = parseFloat(inputHeight.value);
+    const weight = parseFloat(inputWeight.value);
+    const bmi = (Math.round((weight / (height * height) * 10000) * 10) / 10).toFixed(1) ;
+    
+    const minWeight = Math.round(18.5 / 10000 * height * height * 10) / 10; // Ideal weight - min
+    const maxWeight = Math.round(25 / 10000 * height * height * 10) / 10; // Ideal weight - max
+
+    let weigthText;
+    if(weight < minWeight){
+        weigthText = 'underweight';
+    } else if(weight > maxWeight){
+        weigthText = 'obese';
+    } else{
+        weigthText = 'a healthy weight';
+    }
+
     resultGrid.style = "grid-template-columns: 1fr 1fr;";
     result.innerHTML = `<h2>Your BMI is...
         <span>${bmi}</span>
         </h2>`;
-    resultSentence.innerHTML = `<p>Your BMI suggests you're a healthy weight. Your ideal weight is between <strong>63.3kgs - 85.2kgs.</strong></p>`;
+    resultSentence.innerHTML = `<p>Your BMI suggests you're ${weigthText}. Your ideal weight is between <strong>${minWeight}kgs - ${maxWeight}kgs.</strong></p>`;
 }
 const calcImperial = ()=>{
     const weight = (parseFloat(inputWeightSt.value) * 14) + parseFloat(inputWeightLbs.value);
     const height = (parseFloat(inputHeightFt.value) * 12) + parseFloat(inputHeightIn.value);
-    const bmi = Math.round((weight / (height * height) * 703) * 10) / 10 ;
+    const bmi = (Math.round((weight / (height * height) * 703) * 10) / 10).toFixed(1) ;
+
+    const minWeight = Math.round(18.5 / 703 * height * height * 10) / 10; // Ideal weight - min
+    const maxWeight = Math.round(25 / 703 * height * height * 10) / 10; // Ideal weight - max
+
+    // Ideal weigth range
+    const minWeightSt = Math.round(minWeight / 14);
+    const minWeightLbs = Math.round(minWeight % 14 );
+    const maxWeightSt = Math.round(maxWeight / 14);
+    const maxWeightLbs = Math.round(maxWeight % 14 );
+
+    let weigthText;
+    if(weight < minWeight){
+        weigthText = 'underweight';
+    } else if(weight > maxWeight){
+        weigthText = 'obese';
+    } else{
+        weigthText = 'a healthy weight';
+    }
+
     resultGrid.style = "grid-template-columns: 1fr 1fr;";
     result.innerHTML = `<h2>Your BMI is...
         <span>${bmi}</span>
         </h2>`;
-    resultSentence.innerHTML = `<p>Your BMI suggests you're a healthy weight. Your ideal weight is between <strong>63.3kgs - 85.2kgs.</strong></p>`;
+    resultSentence.innerHTML = `<p>Your BMI suggests you're ${weigthText}. Your ideal weight is between <strong>${minWeightSt}st ${minWeightLbs}lbs - ${maxWeightSt}st ${maxWeightLbs}lbs.</strong></p>`;
 }
 
 // Run all functions on typing into inputs (prevent typing letters, call validation according to selected system)
