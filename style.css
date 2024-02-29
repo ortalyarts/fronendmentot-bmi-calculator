@@ -43,7 +43,7 @@ select {
     --color3: rgba(52,95,246,1);
     --color4:rgba(216,226,231,1);
 
-    --gradien1:linear-gradient(160deg, rgba(214,252,254,0.004) 0%, rgba(214,230,254,1) 100%);
+    --gradien1:linear-gradient(90deg, rgba(214,252,254,0.1) 0%, rgba(214,252,254,0.5) 20%, rgba(214,230,254,0.9) 100%);
     --gradien1-light:linear-gradient(160deg, rgba(214,252,254,0.004) 0%, rgba(214,230,254,0.4) 100%);
     --gradien2:linear-gradient(90deg, rgba(52,95,246,1) 0%, rgba(88,125,255,1) 100%);
 
@@ -560,6 +560,9 @@ footer a { color: var(--color1); }
     letter-spacing:-0.2rem;
     max-width:97%;
     text-align: left;
+  }
+  .hero{
+    padding-bottom:6.713rem;
   }
   .hero .text-body-M{
     max-width:83%;
